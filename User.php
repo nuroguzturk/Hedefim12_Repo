@@ -33,7 +33,7 @@ class User extends CI_Controller {
     {
 
         $data['users']=$this->user_model->get_all_users();
-        $this->load->view('index',$data);
+        $this->load->view('login',$data);
     }
     public function user_add()
     {
@@ -129,8 +129,7 @@ class User extends CI_Controller {
       $data= $this->user_model->user_login_control_data($email,$password);
       if($data['isLogin']==true)
       {
-        echo " data[login]=".$data['isLogin'];
-        echo "giris yaptınız.. ";
+		$this->load->view('index');
         $this->session->set_userdata('username',$data['username']);
         $this->session->set_userdata('taskid',$data['taskid']);
         $this->session->set_userdata('userid',$data['userid']);
